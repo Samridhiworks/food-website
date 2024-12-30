@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADD ITEMS</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="add">
+      <h1>Add New User</h1>
+      <div class="flex-col">
+        <form action="/add" method="post" enctype="multipart/form-data">
+          <div class="add-img-upload flex-col">
+            <p>Upload Image</p>
+            <label for="image">
+              <!-- Preview container -->
+              <img id="preview" src="upload_area.png" alt="Preview" width="150" style="cursor: pointer;"/>
+              <input type="file" id="image" name="image" hidden required />
+            </label>
+          </div>
+
+          <div class="add-product-name flex-col">
+            <p>Product Name</p>
+            <input
+              type="text"
+              name="name"
+              placeholder="Type Here..."
+              required />
+          </div>
+
+          <div class="add-product-description flex-col">
+            <p>Product Description</p>
+            <textarea
+              name="description"
+              cols="49"
+              rows="6"
+              placeholder="Write content here..."
+              required>
+            </textarea>
+          </div>
+
+          <div class="add-category-price flex-row">
+            <div class="add-category flex-col">
+              <p>Product Category</p>
+              <select name="category" required>
+                <option value="Salad">Salad</option>
+                <option value="Rolls">Rolls</option>
+                <option value="Deserts">Deserts</option>
+                <option value="Sandwich">Sandwich</option>
+                <option value="Pure Veg">Pure Veg</option>
+                <option value="Pasta">Pasta</option>
+                <option value="Noodles">Noodles</option>
+              </select>
+            </div>
+
+            <div class="add-price flex-col">
+              <p>Product Price</p>
+              <input
+                type="number"
+                name="price"
+                placeholder="$20"
+                required
+                style="margin-bottom: 30px" />
+            </div>
+          </div>
+
+          <button type="submit" class="add-btn">ADD</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+        document.getElementById("image").onchange = (event) => {
+          const [file] = event.target.files; 
+          if (file) {
+            document.getElementById("preview").src = URL.createObjectURL(file); 
+          }
+        };
+      </script>
+  </body>
+</html>
